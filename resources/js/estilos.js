@@ -145,7 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert("Tu carrito está vacío.");
                 return;
             }
-            // CORRECCIÓN: Número de WhatsApp actualizado.
             const phoneNumber = "524777603835";
             let message = "¡Hola! Quisiera hacer el siguiente pedido de Onigiri:\n\n";
             cart.forEach(item => { message += `- ${item.quantity}x ${item.name}\n`; });
@@ -215,12 +214,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const systemPrompt = "Eres un asistente culinario amigable y experto para el restaurante de comida japonesa 'Onigiri'. Tu objetivo es ayudar a los clientes a elegir el platillo perfecto de nuestro menú basándote en sus antojos. Sé conciso, amigable y haz que tus recomendaciones suenen deliciosas. Siempre responde en español y usa un formato simple con un encabezado para el platillo y un párrafo de descripción.";
             const userQuery = `Este es nuestro menú:\n${menuItems}\n\nUn cliente dice que tiene antojo de "${craving}". Basado en el menú, ¿qué platillo o platillos le recomendarías? Describe brevemente por qué es una buena elección para su antojo.`;
 
-            const apiKey = "AIzaSyBFVuemPwDydrxuXTIy_qa7XE2ZSI-RC2o"; 
+            // --- AJUSTE TEMPORAL PARA PRUEBAS LOCALES ---
+            // Se ha insertado tu API key aquí.
+            // ¡IMPORTANTE! Antes de publicar tu sitio, debes eliminar la clave de aquí
+            // y volver a usar el método seguro con la función serverless que creamos.
+            const apiKey = "AIzaSyAwXxePutLypJUmE2QZG-oSixOBtBeRJEI"; 
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
-            const payload = { contents: [{ parts: [{ text: userQuery }] }], systemInstruction: { parts: [{ text: systemPrompt }] } };
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+            };
             
-            const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
 
             if (!response.ok) {
                 const errorData = await response.json();
@@ -239,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) {
             console.error("Error al obtener recomendación:", error);
-            contentContainer.innerHTML = `<p class="text-red-500">Lo sentimos, ocurrió un error. Puede ser un problema con la API Key o la conexión. Revisa la consola para más detalles.</p>`;
+            contentContainer.innerHTML = `<p class="text-red-500">Lo sentimos, ocurrió un error. Puede que la API Key no sea válida o haya un problema de conexión.</p>`;
         } finally {
             loadingIndicator.style.display = 'none';
         }
@@ -258,6 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
             formStatus.innerHTML = '<p class="text-blue-400">Enviando mensaje...</p>';
 
             try {
+                // RECUERDA: Reemplaza "YOUR_UNIQUE_ID" con tu ID de Formspree.
                 const response = await fetch("https://formspree.io/f/YOUR_UNIQUE_ID", {
                     method: 'POST',
                     body: data,
