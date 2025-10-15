@@ -117,9 +117,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p class="text-gray-400">$${item.price.toFixed(2)}</p>
                     </div>
                     <div class="flex items-center space-x-3">
-                        <button class="quantity-change text-lg font-bold p-1 rounded-full bg-gray-600 hover:bg-gray-500" data-name="${item.name}" data-change="-1">-</button>
-                        <span class="w-8 text-center">${item.quantity}</span>
-                        <button class="quantity-change text-lg font-bold p-1 rounded-full bg-gray-600 hover:bg-gray-500" data-name="${item.name}" data-change="1">+</button>
+                        <button class="quantity-change text-lg font-bold p-1 rounded-full bg-gray-600 hover:bg-gray-500" data-name="${item.name}" data-change="-1" aria-label="Disminuir cantidad de ${item.name}">-</button>
+                        <span class="w-8 text-center" aria-live="polite">${item.quantity}</span>
+                        <button class="quantity-change text-lg font-bold p-1 rounded-full bg-gray-600 hover:bg-gray-500" data-name="${item.name}" data-change="1" aria-label="Aumentar cantidad de ${item.name}">+</button>
                     </div>`;
                 cartItemsContainer.appendChild(itemEl);
             });
@@ -145,7 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert("Tu carrito está vacío.");
                 return;
             }
-            const phoneNumber = "524771234567";
+            // CORRECCIÓN: Número de WhatsApp actualizado.
+            const phoneNumber = "524777603835";
             let message = "¡Hola! Quisiera hacer el siguiente pedido de Onigiri:\n\n";
             cart.forEach(item => { message += `- ${item.quantity}x ${item.name}\n`; });
             const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -196,6 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const craving = cravingInput.value.trim();
         if (!craving) {
             contentContainer.innerHTML = '<p class="text-red-500">Por favor, describe tu antojo.</p>';
+            resultContainer.style.display = 'block';
             return;
         }
 
@@ -213,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const systemPrompt = "Eres un asistente culinario amigable y experto para el restaurante de comida japonesa 'Onigiri'. Tu objetivo es ayudar a los clientes a elegir el platillo perfecto de nuestro menú basándote en sus antojos. Sé conciso, amigable y haz que tus recomendaciones suenen deliciosas. Siempre responde en español y usa un formato simple con un encabezado para el platillo y un párrafo de descripción.";
             const userQuery = `Este es nuestro menú:\n${menuItems}\n\nUn cliente dice que tiene antojo de "${craving}". Basado en el menú, ¿qué platillo o platillos le recomendarías? Describe brevemente por qué es una buena elección para su antojo.`;
 
-            const apiKey = "AIzaSyAwXxePutLypJUmE2QZG-oSixOBtBeRJEI"; // API Key agregada
+            const apiKey = "AIzaSyBFVuemPwDydrxuXTIy_qa7XE2ZSI-RC2o"; 
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
             const payload = { contents: [{ parts: [{ text: userQuery }] }], systemInstruction: { parts: [{ text: systemPrompt }] } };
@@ -242,5 +244,49 @@ document.addEventListener('DOMContentLoaded', () => {
             loadingIndicator.style.display = 'none';
         }
     });
+
+    // --- LÓGICA DEL FORMULARIO DE CONTACTO ---
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const data = new FormData(form);
+            
+            formStatus.innerHTML = '<p class="text-blue-400">Enviando mensaje...</p>';
+
+            try {
+                const response = await fetch("https://formspree.io/f/YOUR_UNIQUE_ID", {
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    formStatus.innerHTML = '<p class="text-green-400">¡Mensaje enviado con éxito!</p>';
+                    form.reset();
+                } else {
+                    const responseData = await response.json();
+                    if (responseData.errors) {
+                        const errorMessages = responseData.errors.map(error => error.message).join(', ');
+                        throw new Error(errorMessages);
+                    } else {
+                        throw new Error('Hubo un problema al enviar el formulario.');
+                    }
+                }
+            } catch (error) {
+                console.error('Error en el formulario:', error);
+                formStatus.innerHTML = `<p class="text-red-400">Error: ${error.message}</p>`;
+            } finally {
+                setTimeout(() => {
+                    formStatus.innerHTML = '';
+                }, 5000);
+            }
+        });
+    }
 });
 
