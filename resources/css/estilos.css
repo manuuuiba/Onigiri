@@ -1,14 +1,62 @@
 body {
     font-family: 'Inter', sans-serif;
+    background-color: #1a202c;
+    color: #fff;
 }
+
+/* --- ANIMACIONES Y TRANSICIONES --- */
+
+/* Keyframes para la animación de entrada del título */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Transición suave para botones y enlaces */
+button, a {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Animación de entrada para el título principal */
+.hero-bg h1 {
+    animation: fadeInDown 1s ease-out;
+}
+
+/* Animación de scroll mejorada */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Efecto de elevación para las tarjetas del menú */
+.menu-item {
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.menu-item:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+
+/* --- ESTILOS GENERALES --- */
+
 .hero-bg {
-    /* SOLUCIÓN: Se usa un color de fondo sólido para garantizar la visibilidad. */
-    background-color: #1a202c; 
+    background-image: linear-gradient(rgba(26, 32, 44, 0.7), rgba(26, 32, 44, 0.7)), url('../images/fondo_hero.png');
     background-size: cover;
     background-position: center;
 }
 .footer-bg {
-    /* SOLUCIÓN: Se usa el mismo color de fondo sólido para el pie de página. */
     background-color: #1a202c;
     background-size: cover;
     background-position: center;
@@ -16,15 +64,6 @@ body {
 .menu-item-img {
     aspect-ratio: 1 / 1;
     object-fit: cover;
-}
-.animate-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-.animate-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
 }
 h3[id], section[id] {
     scroll-margin-top: 80px;
@@ -37,6 +76,28 @@ h3[id], section[id] {
  .gemini-recommendation-content p {
     margin-bottom: 1rem;
 }
+
+#gemini-recommendation-content {
+    max-height: 250px;
+    overflow-y: auto;
+    padding-right: 1rem;
+}
+
+/* Estilos de los botones de ejemplo para el tema oscuro */
+.example-prompt {
+    background-color: #374151; /* gray-700 */
+    color: #d1d5db; /* gray-300 */
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    border: 1px solid #4b5563; /* gray-600 */
+}
+.example-prompt:hover {
+    background-color: #4b5563; /* gray-600 */
+    color: #ffffff; /* white */
+    border-color: #6b7280; /* gray-500 */
+}
+
 .menu-nav-link.active {
     color: #ef4444;
     border-color: #ef4444;
@@ -49,5 +110,16 @@ details > summary::-webkit-details-marker {
 }
 details[open] summary .arrow-down {
     transform: rotate(180deg);
+}
+.bg-dark-1 { background-color: #23272f; }
+.bg-dark-2 { background-color: #181c23; }
+.text-light { color: #12df42; }
+.text-muted { color: #17a845; }
+
+.navbar-logo {
+    height: 4.5rem; 
+}
+.navbar-logo:hover {
+    transform: scale(1.05);
 }
 

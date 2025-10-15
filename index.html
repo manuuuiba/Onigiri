@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Onigiri | Pide Comida Japonesa a Domicilio en León, Gto.</title>
     <meta name="description" content="Pide el mejor sushi, ramen y comida japonesa a domicilio en León, Gto. Ingredientes frescos, sabor auténtico y entrega rápida. ¡Ordena ahora!">
+    <link rel="icon" type="image/png" href="resources/images/onigiri.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <!-- Enlace a la hoja de estilos externa -->
-    <link rel="stylesheet" href="resources/css/style.css">
+    
+    <link rel="stylesheet" href="resources/css/estilos.css">
     
     <script type="application/ld+json">
     {
@@ -48,22 +48,25 @@
     }
     </script>
 </head>
-<body class="bg-gray-50 text-gray-800">
-
-    <header class="bg-white shadow-md sticky top-0 z-50">
+<body class="text-white" style="background-color: #1a202c;">
+    <header class="bg-[#23272f] shadow-md sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-2 flex justify-between items-center">
             <a href="#">
-                <img src="resources/images/onigiri.png" alt="Onigiri Logo" class="h-14">
+                <img src="resources/images/onigiri.png" alt="Onigiri Logo" class="navbar-logo">
             </a>
             <div class="hidden md:flex items-center space-x-6">
-                <a href="#menu" class="text-gray-600 hover:text-red-600 transition duration-300">Menú</a>
-                <a href="#gallery" class="text-gray-600 hover:text-red-600 transition duration-300">Galería</a>
-                <a href="#about-us" class="text-gray-600 hover:text-red-600 transition duration-300">Nosotros</a>
-                <a href="#faq" class="text-gray-600 hover:text-red-600 transition duration-300">FAQ</a>
+                <a href="#menu" class="text-gray-300 hover:text-red-500 transition duration-300">Menú</a>
+                <a href="#gallery" class="text-gray-300 hover:text-red-500 transition duration-300">Galería</a>
+                <a href="#about-us" class="text-gray-300 hover:text-red-500 transition duration-300">Nosotros</a>
+                <a href="#faq" class="text-gray-300 hover:text-red-500 transition duration-300">FAQ</a>
             </div>
             <div class="flex items-center space-x-4">
                 <button id="cart-button" class="relative group p-2">
-                    <i class="ph-shopping-cart-simple text-2xl text-gray-600 group-hover:text-red-600 transition duration-300"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-6 h-6 text-white group-hover:text-red-500 transition-colors duration-300" fill="currentColor">
+                        <path d="M216.3,152.2l-20-96A8.1,8.1,0,0,0,188.1,48H53.8a8,8,0,0,0-7.9,6.2L31.9,184.9a7.8,7.8,0,0,0,1.8,6.2,8,8,0,0,0,6.1,1.9H184a8,8,0,0,0,0-16H47.1l4.2-24H182.9a8,8,0,0,0,7.9-6.1L216.3,57.8A8.1,8.1,0,0,0,216.3,152.2Z"></path>
+                        <circle cx="80" cy="216" r="12"></circle>
+                        <circle cx="184" cy="216" r="12"></circle>
+                    </svg>
                     <span id="cart-count" class="absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
                 </button>
             </div>
@@ -77,50 +80,50 @@
                 <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">El sabor auténtico de Japón, en tu puerta en minutos. Rápido, fresco y delicioso.</p>
                 <div class="max-w-xl mx-auto bg-white rounded-full p-2 flex items-center shadow-lg">
                     <input type="text" placeholder="Ingresa tu dirección de entrega..." class="w-full bg-transparent text-gray-700 focus:outline-none px-4">
-                    <button class="bg-red-600 text-white rounded-full px-6 py-3 font-semibold hover:bg-red-700 transition duration-300 whitespace-nowrap">Verificar</button>
+                    <button id="verify-button" class="bg-red-600 text-white rounded-full px-6 py-3 font-semibold hover:bg-red-700 transition duration-300 whitespace-nowrap">Verificar</button>
                 </div>
                 <a href="#menu" class="mt-8 inline-block bg-white text-red-600 font-bold rounded-full py-3 px-8 text-lg hover:bg-gray-100 transition duration-300 transform hover:-translate-y-1">Ver Menú y Ordenar</a>
             </div>
         </section>
 
-        <section class="py-16 bg-white">
+        <section id="about-us" class="py-16 bg-[#23272f]">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl font-bold text-center mb-10 animate-on-scroll">¿Por Qué Onigiri?</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                     <div class="animate-on-scroll" style="transition-delay: 100ms;">
-                        <i class="ph-leaf text-5xl text-green-500 mb-4"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-14 h-14 text-green-400 mb-4 mx-auto" fill="currentColor" viewBox="0 0 256 256"><path d="M228,157.3a128.4,128.4,0,0,1-100,68.7,120,120,0,0,1-115.1-60.6,128.3,128.3,0,0,1,36-136.3,127.8,127.8,0,0,1,164.3,36.1C221.7,85.9,228.8,121.1,228,157.3ZM128,40a112.2,112.2,0,0,0-28.7,1.8,103.6,103.6,0,0,0-57,49.2,112.2,112.2,0,0,0,31,127.2,104,104,0,0,0,111.9-20.4,112,112,0,0,0,23.1-66.2C210.5,84.9,173.3,40,128,40Z"></path></svg>
                         <h3 class="text-xl font-bold mb-2">Ingredientes Frescos</h3>
-                        <p class="text-gray-600">Seleccionamos los mejores y más frescos ingredientes para garantizar un sabor inigualable en cada platillo.</p>
+                        <p class="text-gray-300">Seleccionamos los mejores y más frescos ingredientes para garantizar un sabor inigualable en cada platillo.</p>
                     </div>
                     <div class="animate-on-scroll" style="transition-delay: 200ms;">
-                        <i class="ph-fire text-5xl text-red-500 mb-4"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-14 h-14 text-red-500 mb-4 mx-auto" fill="currentColor" viewBox="0 0 256 256"><path d="M203.4,100.8a88.1,88.1,0,0,0-85.3-76.4,8,8,0,0,0-9.8,5.4,80.1,80.1,0,0,0-27,58.9c0,21.5-12.2,48.2-51.2,74.5a8,8,0,0,0,2.9,14.5,153,153,0,0,0,56.5-31.9,81.7,81.7,0,0,0,16.1,15.7,8,8,0,0,0,11.2-1.6,104.1,104.1,0,0,0,44-51.4C198.8,109.9,202,105.4,203.4,100.8Zm-79,74.4a96.1,96.1,0,0,1-22.3-17.5,8,8,0,0,0-11.2,1.6,65.6,65.6,0,0,1-13.2-12.9,8,8,0,0,0-11.2-1.7c-29.3,17.4-44.1,8.3-44.2-15.6,0-15,11.3-38.3,27.4-56.1a64.1,64.1,0,0,1,28-17.6,8,8,0,0,0,5.7-9,63.9,63.9,0,0,1,16.6-32.9,72.1,72.1,0,0,1,69.5,62.3C152.8,121.7,126.3,172.9,124.4,175.2Z"></path></svg>
                         <h3 class="text-xl font-bold mb-2">Sabor Auténtico</h3>
-                        <p class="text-gray-600">Nuestros chefs preparan cada orden siguiendo recetas tradicionales para que disfrutes del verdadero sabor de Japón.</p>
+                        <p class="text-gray-300">Nuestros chefs preparan cada orden siguiendo recetas tradicionales para que disfrutes del verdadero sabor de Japón.</p>
                     </div>
                     <div class="animate-on-scroll" style="transition-delay: 300ms;">
-                        <i class="ph-rocket-launch text-5xl text-blue-500 mb-4"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-14 h-14 text-blue-500 mb-4 mx-auto" fill="currentColor" viewBox="0 0 256 256"><path d="M221.4,34.6a112.1,112.1,0,0,0-157.8,0,8,8,0,0,0,0,11.3L89,71.2a8,8,0,0,0,11.3,0l18.4-18.3,34.3,34.3-18.3,18.4a8,8,0,0,0,0,11.3l25.3,25.4a8,8,0,0,0,11.3,0l18.4-18.3,34.3,34.3-18.3,18.4a8,8,0,0,0,0,11.3l25.4,25.3a8,8,0,0,0,11.3,0,112.1,112.1,0,0,0,0-157.8ZM164.9,120.5l-45.2-45.2,18.3-18.4,45.2,45.2Zm-84.8-16L58.3,126.3l-16-16,21.8-21.8ZM210.3,95.7l-21.8,21.8-16-16,21.8-21.8ZM91.5,164.5,46.3,119.3l18.4-18.3,45.2,45.2Z"></path></svg>
                         <h3 class="text-xl font-bold mb-2">Entrega Rápida</h3>
-                        <p class="text-gray-600">Tu comida caliente y fresca en la puerta de tu casa. Nos esforzamos por ser los más rápidos de León.</p>
+                        <p class="text-gray-300">Tu comida caliente y fresca en la puerta de tu casa. Nos esforzamos por ser los más rápidos de León.</p>
                     </div>
                 </div>
             </div>
         </section>
         
-        <section class="py-16 bg-gray-50">
+        <section class="py-16 bg-[#181c23]">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl font-bold text-center mb-12 animate-on-scroll">Lo que dicen nuestros clientes</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-white p-8 rounded-lg shadow-lg animate-on-scroll" style="transition-delay: 100ms;">
+                    <div class="bg-[#23272f] p-8 rounded-lg shadow-lg animate-on-scroll">
                         <div class="flex items-center mb-4">
                             <img class="w-12 h-12 rounded-full mr-4 object-cover" src="resources/images/carlos m.jpg" alt="Avatar de Carlos M.">
                             <div>
-                                <h4 class="font-bold">Lionel Messi.</h4>
+                                <h4 class="font-bold text-white">Lionel Messi.</h4>
                                 <div class="text-yellow-400">★★★★★</div>
                             </div>
                         </div>
-                        <p class="text-gray-600 italic">"¡El mejor ramen que he probado en León! La entrega fue súper rápida y la comida llegó caliente. El Tonkotsu es de otro nivel. 100% recomendado."</p>
+                        <p class="text-gray-300 italic">"¡El mejor ramen que he probado en León! La entrega fue súper rápida y la comida llegó caliente. El Tonkotsu es de otro nivel. 100% recomendado."</p>
                     </div>
-                    <div class="bg-white p-8 rounded-lg shadow-lg animate-on-scroll" style="transition-delay: 200ms;">
+                    <div class="bg-[#23272f] p-8 rounded-lg shadow-lg animate-on-scroll" style="transition-delay: 200ms;">
                         <div class="flex items-center mb-4">
                             <img class="w-12 h-12 rounded-full mr-4 object-cover" src="resources/images/sofia g.webp" alt="Avatar de Sofía G.">
                             <div>
@@ -128,9 +131,9 @@
                                 <div class="text-yellow-400">★★★★★</div>
                             </div>
                         </div>
-                        <p class="text-gray-600 italic">"Pedimos varios rollos de sushi para una reunión y todos quedamos encantados. El Rollo Dragón es espectacular y los ingredientes se sienten muy frescos."</p>
+                        <p class="text-gray-300 italic">"Pedimos varios rollos de sushi para una reunión y todos quedamos encantados. El Rollo Dragón es espectacular y los ingredientes se sienten muy frescos."</p>
                     </div>
-                    <div class="bg-white p-8 rounded-lg shadow-lg animate-on-scroll" style="transition-delay: 300ms;">
+                    <div class="bg-[#23272f] p-8 rounded-lg shadow-lg animate-on-scroll" style="transition-delay: 300ms;">
                         <div class="flex items-center mb-4">
                             <img class="w-12 h-12 rounded-full mr-4 object-cover" src="resources/images/javier r.jpeg" alt="Avatar de Javier R.">
                             <div>
@@ -138,13 +141,13 @@
                                 <div class="text-yellow-400">★★★★☆</div>
                             </div>
                         </div>
-                        <p class="text-gray-600 italic">"¡Gran servicio y sabor! El Chashudón estaba delicioso. Solo tardó un poquito más de lo esperado, pero la calidad de la comida valió la pena."</p>
+                        <p class="text-gray-300 italic">"¡Gran servicio y sabor! El Chashudón estaba delicioso. Solo tardó un poquito más de lo esperado, pero la calidad de la comida valió la pena."</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="gallery" class="py-16 bg-white">
+        <section id="gallery" class="py-16 bg-[#23272f]">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl font-bold text-center mb-12 animate-on-scroll">Nuestros Platillos Estrella</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -178,12 +181,12 @@
 
         <section id="menu" class="py-16">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-4 animate-on-scroll">Nuestro Menú</h2>
+                <h2 class="text-3xl font-bold text-center mb-4 animate-on-scroll text-white">Nuestro Menú</h2>
                 
                 <div class="flex justify-center space-x-4 md:space-x-8 mb-8 animate-on-scroll">
-                    <a href="#ramen" class="menu-nav-link text-lg font-semibold text-gray-600 hover:text-red-600 border-b-2 border-transparent transition duration-300">Ramen</a>
-                    <a href="#sushi" class="menu-nav-link text-lg font-semibold text-gray-600 hover:text-red-600 border-b-2 border-transparent transition duration-300">Sushi</a>
-                    <a href="#donburi" class="menu-nav-link text-lg font-semibold text-gray-600 hover:text-red-600 border-b-2 border-transparent transition duration-300">Donburi & Entradas</a>
+                    <a href="#ramen" class="menu-nav-link text-lg font-semibold text-gray-400 hover:text-red-500 border-b-2 border-transparent transition duration-300">Ramen</a>
+                    <a href="#sushi" class="menu-nav-link text-lg font-semibold text-gray-400 hover:text-red-500 border-b-2 border-transparent transition duration-300">Sushi</a>
+                    <a href="#donburi" class="menu-nav-link text-lg font-semibold text-gray-400 hover:text-red-500 border-b-2 border-transparent transition duration-300">Donburi & Entradas</a>
                 </div>
                 
                 <div class="text-center mb-12 animate-on-scroll">
@@ -192,9 +195,9 @@
                     </button>
                 </div>
 
-                <h3 id="ramen" class="text-2xl font-bold mb-6 animate-on-scroll">Ramen</h3>
+                <h3 id="ramen" class="text-2xl font-bold mb-6 animate-on-scroll text-white">Ramen</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-                    <div class="menu-item bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 animate-on-scroll">
+                    <div class="menu-item bg-white text-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 animate-on-scroll">
                         <div class="relative">
                             <img src="resources/images/misoramen.jpg" alt="Foto de Miso Ramen" class="w-full h-56 menu-item-img">
                             <span class="absolute top-2 right-2 bg-green-500 text-white text-sm font-semibold px-3 py-1 rounded-full">Más Vendido</span>
@@ -205,7 +208,7 @@
                             <div class="flex justify-between items-center"><span class="text-2xl font-extrabold text-red-600">$280.00</span><button class="add-to-cart-btn bg-gray-800 text-white rounded-full px-5 py-2 font-semibold hover:bg-red-600 transition duration-300" data-name="Miso Ramen" data-price="280.00">Agregar</button></div>
                         </div>
                     </div>
-                    <div class="menu-item bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 animate-on-scroll">
+                    <div class="menu-item bg-white text-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 animate-on-scroll">
                         <img src="resources/images/tonkotsu.jpg" alt="Foto de Tonkotsu Ramen" class="w-full h-56 menu-item-img">
                         <div class="p-6">
                             <div class="flex justify-between items-start mb-2"><h4 class="text-xl font-bold item-name">Tonkotsu Ramen</h4><div class="flex items-center"><span class="text-yellow-400">★★★★★</span></div></div>
@@ -215,449 +218,320 @@
                     </div>
                 </div>
 
-                <h3 id="sushi" class="text-2xl font-bold mb-6 animate-on-scroll">Rollos de Sushi</h3>
+                <h3 id="sushi" class="text-2xl font-bold mb-6 animate-on-scroll text-white">Rollos de Sushi</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-                     <div class="menu-item bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 animate-on-scroll">
+                     <div class="menu-item bg-white text-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 animate-on-scroll">
                         <div class="relative">
                            <img src="resources/images/rollodragon.jpg" alt="Foto de Rollo Dragón" class="w-full h-56 menu-item-img">
                            <span class="absolute top-2 right-2 bg-red-600 text-white text-sm font-semibold px-3 py-1 rounded-full">Oferta 2x1</span>
                         </div>
                         <div class="p-6">
                             <div class="flex justify-between items-start mb-2"><h4 class="text-xl font-bold item-name">Rollo Dragón</h4><div class="flex items-center"><span class="text-yellow-400">★★★★</span><span class="text-gray-300">★</span></div></div>
-                            <p class="text-gray-600 text-sm mb-4 item-desc">Anguila y pepino por dentro, cubierto de aguacate y salsa de anguila. ¡Irresistible!</p>
-                            <div class="flex justify-between items-center"><span class="text-2xl font-extrabold text-red-600">$195.00</span><button class="add-to-cart-btn bg-gray-800 text-white rounded-full px-5 py-2 font-semibold hover:bg-red-600 transition duration-300" data-name="Rollo Dragón" data-price="195.00">Agregar</button></div>
+                            <p class="text-gray-600 text-sm mb-4 item-desc">Deliciosos rollos de sushi con aguacate, pepino, y nuestro especial de la casa, ¡no te los puedes perder!</p>
+                            <div class="flex justify-between items-center"><span class="text-2xl font-extrabold text-red-600">$220.00</span><button class="add-to-cart-btn bg-gray-800 text-white rounded-full px-5 py-2 font-semibold hover:bg-red-600 transition duration-300" data-name="Rollo Dragón" data-price="220.00">Agregar</button></div>
                         </div>
                     </div>
-                    <div class="menu-item bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 animate-on-scroll">
-                        <img src="resources/images/rollocalifornia.jpg" alt="Foto de California Roll" class="w-full h-56 menu-item-img">
+                    <div class="menu-item bg-white text-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 animate-on-scroll">
+                        <img src="resources/images/salmonroll.jpg" alt="Foto de Rollo de Salmón" class="w-full h-56 menu-item-img">
                         <div class="p-6">
-                            <div class="flex justify-between items-start mb-2"><h4 class="text-xl font-bold item-name">California Roll</h4><div class="flex items-center"><span class="text-yellow-400">★★★★</span><span class="text-gray-300">★</span></div></div>
-                            <p class="text-gray-600 text-sm mb-4 item-desc">El clásico rollo con surimi, pepino, aguacate y masago por fuera.</p>
-                            <div class="flex justify-between items-center"><span class="text-2xl font-extrabold text-red-600">$150.00</span><button class="add-to-cart-btn bg-gray-800 text-white rounded-full px-5 py-2 font-semibold hover:bg-red-600 transition duration-300" data-name="California Roll" data-price="150.00">Agregar</button></div>
-                        </div>
-                    </div>
-                     <div class="menu-item bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 animate-on-scroll">
-                        <img src="resources/images/nigiris.jpg" alt="Foto de Set de Nigiris" class="w-full h-56 menu-item-img">
-                        <div class="p-6">
-                            <div class="flex justify-between items-start mb-2"><h4 class="text-xl font-bold item-name">Set de Nigiris</h4><div class="flex items-center"><span class="text-yellow-400">★★★★★</span></div></div>
-                            <p class="text-gray-600 text-sm mb-4 item-desc">Una selección del chef con 5 piezas de nigiri: atún, salmón, camarón, pulpo y anguila.</p>
-                            <div class="flex justify-between items-center"><span class="text-2xl font-extrabold text-red-600">$250.00</span><button class="add-to-cart-btn bg-gray-800 text-white rounded-full px-5 py-2 font-semibold hover:bg-red-600 transition duration-300" data-name="Set de Nigiris" data-price="250.00">Agregar</button></div>
+                            <div class="flex justify-between items-start mb-2"><h4 class="text-xl font-bold item-name">Rollo de Salmón</h4><div class="flex items-center"><span class="text-yellow-400">★★★★★</span></div></div>
+                            <p class="text-gray-600 text-sm mb-4 item-desc">Salmón fresco, aguacate, y queso crema, envuelto en alga nori y arroz sushi.</p>
+                            <div class="flex justify-between items-center"><span class="text-2xl font-extrabold text-red-600">$250.00</span><button class="add-to-cart-btn bg-gray-800 text-white rounded-full px-5 py-2 font-semibold hover:bg-red-600 transition duration-300" data-name="Rollo de Salmón" data-price="250.00">Agregar</button></div>
                         </div>
                     </div>
                 </div>
 
-                <h3 id="donburi" class="text-2xl font-bold mb-6 animate-on-scroll">Donburi & Entradas</h3>
-                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                     <div class="menu-item bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 animate-on-scroll">
-                        <img src="resources/images/chashudon.jpg" alt="Foto de Chashudón" class="w-full h-56 menu-item-img">
+                <h3 id="donburi" class="text-2xl font-bold mb-6 animate-on-scroll text-white">Donburi & Entradas</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                    <div class="menu-item bg-white text-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 animate-on-scroll">
+                        <div class="relative">
+                            <img src="resources/images/chashudon.jpg" alt="Foto de Chashudón" class="w-full h-56 menu-item-img">
+                            <span class="absolute top-2 right-2 bg-red-500 text-white text-sm font-semibold px-3 py-1 rounded-full">Nuevo</span>
+                        </div>
                         <div class="p-6">
-                            <div class="flex justify-between items-start mb-2"><h4 class="text-xl font-bold item-name">Chashudón</h4><div class="flex items-center"><span class="text-yellow-400">★★★★★</span></div></div>
-                            <p class="text-gray-600 text-sm mb-4 item-desc">Arroz bañado en salsa de soya especial, carne de cerdo, cebollín fresco y mayonesa.</p>
-                            <div class="flex justify-between items-center"><span class="text-2xl font-extrabold text-red-600">$220.00</span><button class="add-to-cart-btn bg-gray-800 text-white rounded-full px-5 py-2 font-semibold hover:bg-red-600 transition duration-300" data-name="Chashudón" data-price="220.00">Agregar</button></div>
+                            <div class="flex justify-between items-start mb-2"><h4 class="text-xl font-bold item-name">Chashudón</h4><div class="flex items-center"><span class="text-yellow-400">★★★★☆</span></div></div>
+                            <p class="text-gray-600 text-sm mb-4 item-desc">Arroz japonés con cerdo chashu, huevo marinado, y cebollín, servido con salsa tare.</p>
+                            <div class="flex justify-between items-center"><span class="text-2xl font-extrabold text-red-600">$310.00</span><button class="add-to-cart-btn bg-gray-800 text-white rounded-full px-5 py-2 font-semibold hover:bg-red-600 transition duration-300" data-name="Chashudón" data-price="310.00">Agregar</button></div>
                         </div>
                     </div>
-                     <div class="menu-item bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 animate-on-scroll">
-                        <img src="resources/images/katsudon.jpg" alt="Foto de Katsudon" class="w-full h-56 menu-item-img">
+                    <div class="menu-item bg-white text-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 animate-on-scroll">
+                        <img src="resources/images/gyoza.jpg" alt="Foto de Gyoza" class="w-full h-56 menu-item-img">
                         <div class="p-6">
-                            <div class="flex justify-between items-start mb-2"><h4 class="text-xl font-bold item-name">Katsudon</h4><div class="flex items-center"><span class="text-yellow-400">★★★★</span><span class="text-gray-300">★</span></div></div>
-                            <p class="text-gray-600 text-sm mb-4 item-desc">Cuenco de arroz cubierto con una chuleta de cerdo empanizada, huevo y condimentos.</p>
-                            <div class="flex justify-between items-center"><span class="text-2xl font-extrabold text-red-600">$230.00</span><button class="add-to-cart-btn bg-gray-800 text-white rounded-full px-5 py-2 font-semibold hover:bg-red-600 transition duration-300" data-name="Katsudon" data-price="230.00">Agregar</button></div>
-                        </div>
-                    </div>
-                     <div class="menu-item bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 animate-on-scroll">
-                        <img src="resources/images/gyozas.jpg" alt="Foto de Gyozas" class="w-full h-56 menu-item-img">
-                        <div class="p-6">
-                            <div class="flex justify-between items-start mb-2"><h4 class="text-xl font-bold item-name">Gyozas (5 pzs)</h4><div class="flex items-center"><span class="text-yellow-400">★★★★★</span></div></div>
-                            <p class="text-gray-600 text-sm mb-4 item-desc">Empanadillas japonesas rellenas de cerdo y vegetales, selladas a la plancha.</p>
-                            <div class="flex justify-between items-center"><span class="text-2xl font-extrabold text-red-600">$110.00</span><button class="add-to-cart-btn bg-gray-800 text-white rounded-full px-5 py-2 font-semibold hover:bg-red-600 transition duration-300" data-name="Gyozas (5 pzs)" data-price="110.00">Agregar</button></div>
-                        </div>
-                    </div>
-                     <div class="menu-item bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 animate-on-scroll">
-                        <img src="resources/images/onigiris.jpg" alt="Foto de Onigiri Clásico" class="w-full h-56 menu-item-img">
-                        <div class="p-6">
-                            <div class="flex justify-between items-start mb-2"><h4 class="text-xl font-bold item-name">Onigiri Clásico</h4><div class="flex items-center"><span class="text-yellow-400">★★★★★</span></div></div>
-                            <p class="text-gray-600 text-sm mb-4 item-desc">Triángulo de arroz relleno de atún picante, envuelto en alga nori crujiente.</p>
-                            <div class="flex justify-between items-center"><span class="text-2xl font-extrabold text-red-600">$85.00</span><button class="add-to-cart-btn bg-gray-800 text-white rounded-full px-5 py-2 font-semibold hover:bg-red-600 transition duration-300" data-name="Onigiri Clásico" data-price="85.00">Agregar</button></div>
+                            <div class="flex justify-between items-start mb-2"><h4 class="text-xl font-bold item-name">Gyoza</h4><div class="flex items-center"><span class="text-yellow-400">★★★★</span><span class="text-gray-300">★</span></div></div>
+                            <p class="text-gray-600 text-sm mb-4 item-desc">Empanadillas japonesas rellenas de cerdo y verduras, servidas con salsa de soya.</p>
+                            <div class="flex justify-between items-center"><span class="text-2xl font-extrabold text-red-600">$180.00</span><button class="add-to-cart-btn bg-gray-800 text-white rounded-full px-5 py-2 font-semibold hover:bg-red-600 transition duration-300" data-name="Gyoza" data-price="180.00">Agregar</button></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="info" class="bg-gray-100 py-16">
+        <section class="py-16 bg-[#23272f]">
             <div class="container mx-auto px-6">
-                 <h2 class="text-3xl font-bold text-center mb-10 animate-on-scroll">Tu Pedido, a Tu Manera</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                    <div class="bg-white p-8 rounded-lg shadow animate-on-scroll" style="transition-delay: 100ms;">
-                        <i class="ph-clock text-4xl text-red-500 mb-3"></i>
-                        <h3 class="text-xl font-bold mb-2">Horarios de Servicio</h3>
-                        <p class="text-gray-600">Lunes a Jueves: 12:30 - 20:30</p>
-                        <p class="text-gray-600">Viernes a Domingo: 12:30 - 22:00</p>
+                <h2 class="text-3xl font-bold text-center mb-4 animate-on-scroll text-white">Bebidas</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 animate-on-scroll">
+                    <div class="menu-item bg-white text-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="resources/images/cerveza.jpg" alt="Foto de Cerveza Japonesa" class="w-full h-56 menu-item-img">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold mb-2 item-name">Cerveza Japonesa</h4>
+                            <p class="text-gray-600 text-sm mb-4 item-desc">Refrescante cerveza japonesa, perfecta para acompañar tu comida.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-extrabold text-red-600">$80.00</span>
+                                <button class="add-to-cart-btn bg-gray-800 text-white rounded-full px-5 py-2 font-semibold hover:bg-red-600 transition duration-300" data-name="Cerveza Japonesa" data-price="80.00">Agregar</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="bg-white p-8 rounded-lg shadow animate-on-scroll" style="transition-delay: 200ms;">
-                        <i class="ph-package text-4xl text-red-500 mb-3"></i>
-                        <h3 class="text-xl font-bold mb-2">Entrega Rápida y Segura</h3>
-                        <p class="text-gray-600">Tiempo de entrega estimado: 25-40 min</p>
-                        <p class="font-semibold text-green-600">Envío sin costo en pedidos mayores a $400</p>
+                    <div class="menu-item bg-white text-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="resources/images/sake.jpg" alt="Foto de Sake" class="w-full h-56 menu-item-img">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold mb-2 item-name">Sake</h4>
+                            <p class="text-gray-600 text-sm mb-4 item-desc">Bebida alcohólica japonesa hecha de arroz, con un sabor suave y delicado.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-extrabold text-red-600">$150.00</span>
+                                <button class="add-to-cart-btn bg-gray-800 text-white rounded-full px-5 py-2 font-semibold hover:bg-red-600 transition duration-300" data-name="Sake" data-price="150.00">Agregar</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="bg-white p-8 rounded-lg shadow animate-on-scroll" style="transition-delay: 300ms;">
-                        <i class="ph-credit-card text-4xl text-red-500 mb-3"></i>
-                        <h3 class="text-xl font-bold mb-2">Opciones de Pago</h3>
-                        <p class="text-gray-600">Aceptamos tarjetas de crédito/débito, PayPal y Mercado Pago. ¡Paga en línea sin complicaciones!</p>
+                    <div class="menu-item bg-white text-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="resources/images/refresco.jpg" alt="Foto de Refresco" class="w-full h-56 menu-item-img">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold mb-2 item-name">Refresco</h4>
+                            <p class="text-gray-600 text-sm mb-4 item-desc">Variedad de refrescos en lata, el complemento ideal para tu comida.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-extrabold text-red-600">$50.00</span>
+                                <button class="add-to-cart-btn bg-gray-800 text-white rounded-full px-5 py-2 font-semibold hover:bg-red-600 transition duration-300" data-name="Refresco" data-price="50.00">Agregar</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        
-        <section id="about-us" class="py-20 bg-white">
+
+        <section class="py-16 bg-[#181c23]">
             <div class="container mx-auto px-6">
-                <div class="flex flex-col md:flex-row items-center gap-12">
-                    <div class="md:w-1/2 animate-on-scroll">
-                        <img src="resources/images/nosotros.jpg" alt="Chef de Onigiri preparando comida" class="rounded-lg shadow-xl w-full">
+                <h2 class="text-3xl font-bold text-center mb-4 animate-on-scroll text-white">Postres</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 animate-on-scroll">
+                    <div class="menu-item bg-white text-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="resources/images/cheesecake.jpg" alt="Foto de Cheesecake Japonés" class="w-full h-56 menu-item-img">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold mb-2 item-name">Cheesecake Japonés</h4>
+                            <p class="text-gray-600 text-sm mb-4 item-desc">Suave y cremoso cheesecake al estilo japonés, un postre ligero y delicioso.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-extrabold text-red-600">$120.00</span>
+                                <button class="add-to-cart-btn bg-gray-800 text-white rounded-full px-5 py-2 font-semibold hover:bg-red-600 transition duration-300" data-name="Cheesecake Japonés" data-price="120.00">Agregar</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="md:w-1/2 animate-on-scroll" style="transition-delay: 200ms;">
-                        <h2 class="text-3xl font-bold mb-4">Nuestra Pasión por el Sabor</h2>
-                        <p class="text-gray-600 mb-4 leading-relaxed">Onigiri nació de un sueño: traer el auténtico sabor de las calles de Tokio a León. No somos solo un restaurante; somos una familia apasionada por la gastronomía japonesa, comprometida con la frescura y la calidad. Cada platillo que preparamos es una pieza de nuestra historia, elaborado con ingredientes de primera y recetas que han pasado de generación en generación.</p>
-                        <p class="text-gray-600 leading-relaxed">Creemos que una buena comida puede alegrar el día, y nuestra misión es entregar esa alegría directamente en tu puerta. Gracias por dejarnos ser parte de tus momentos.</p>
+                    <div class="menu-item bg-white text-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="resources/images/matcha.jpg" alt="Foto de Helado de Matcha" class="w-full h-56 menu-item-img">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold mb-2 item-name">Helado de Matcha</h4>
+                            <p class="text-gray-600 text-sm mb-4 item-desc">Delicioso helado cremoso de té verde matcha, un sabor auténtico y refrescante.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-extrabold text-red-600">$100.00</span>
+                                <button class="add-to-cart-btn bg-gray-800 text-white rounded-full px-5 py-2 font-semibold hover:bg-red-600 transition duration-300" data-name="Helado de Matcha" data-price="100.00">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item bg-white text-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="resources/images/mochi.jpg" alt="Foto de Mochi" class="w-full h-56 menu-item-img">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold mb-2 item-name">Mochi</h4>
+                            <p class="text-gray-600 text-sm mb-4 item-desc">Dulce japonés de arroz glutinoso relleno de pasta de frijol rojo, un bocado suave y delicioso.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-extrabold text-red-600">$90.00</span>
+                                <button class="add-to-cart-btn bg-gray-800 text-white rounded-full px-5 py-2 font-semibold hover:bg-red-600 transition duration-300" data-name="Mochi" data-price="90.00">Agregar</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="faq" class="py-20 bg-gray-50">
-            <div class="container mx-auto px-6 max-w-3xl">
-                <h2 class="text-3xl font-bold text-center mb-12 animate-on-scroll">Preguntas Frecuentes</h2>
-                <div class="space-y-4">
-                    <div class="bg-white p-2 rounded-lg shadow-md animate-on-scroll" style="transition-delay: 100ms;">
-                        <details class="group">
-                            <summary class="flex justify-between items-center font-semibold cursor-pointer p-4">
-                                <span>¿Tienen opciones vegetarianas?</span>
-                                <i class="ph-caret-down text-xl arrow-down transition-transform duration-300"></i>
-                            </summary>
-                            <div class="px-4 pb-4 text-gray-600">
-                                ¡Sí! Aunque no están listados explícitamente en el menú principal, podemos adaptar varios de nuestros platillos para que sean vegetarianos. Por favor, llámanos para darte las mejores opciones del día.
+        <section class="py-16 bg-[#23272f]">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-4 animate-on-scroll text-white">Combos Especiales</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 animate-on-scroll">
+                    <div class="menu-item bg-white text-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="resources/images/combo1.jpg" alt="Foto de Combo 1" class="w-full h-56 menu-item-img">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold mb-2 item-name">Combo Ramen & Sushi</h4>
+                            <p class="text-gray-600 text-sm mb-4 item-desc">Disfruta de un delicioso ramen y un surtido de nuestros mejores rollos de sushi.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-extrabold text-red-600">$550.00</span>
+                                <button class="add-to-cart-btn bg-gray-800 text-white rounded-full px-5 py-2 font-semibold hover:bg-red-600 transition duration-300" data-name="Combo Ramen & Sushi" data-price="550.00">Agregar</button>
                             </div>
-                        </details>
+                        </div>
                     </div>
-                    <div class="bg-white p-2 rounded-lg shadow-md animate-on-scroll" style="transition-delay: 200ms;">
-                        <details class="group">
-                            <summary class="flex justify-between items-center font-semibold cursor-pointer p-4">
-                                <span>¿Cuál es el costo de envío y sus zonas de reparto?</span>
-                                <i class="ph-caret-down text-xl arrow-down transition-transform duration-300"></i>
-                            </summary>
-                            <div class="px-4 pb-4 text-gray-600">
-                                El envío es gratis en pedidos mayores a $400. Para pedidos menores, el costo estándar es de $50. Repartimos en la mayor parte de León; al ingresar tu dirección en la parte superior, nuestro sistema te confirmará la cobertura en tu colonia.
+                    <div class="menu-item bg-white text-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="resources/images/combo2.jpg" alt="Foto de Combo 2" class="w-full h-56 menu-item-img">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold mb-2 item-name">Combo Donburi & Gyoza</h4>
+                            <p class="text-gray-600 text-sm mb-4 item-desc">Un sabroso donburi acompañado de gyozas crujientes y doradas.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-extrabold text-red-600">$480.00</span>
+                                <button class="add-to-cart-btn bg-gray-800 text-white rounded-full px-5 py-2 font-semibold hover:bg-red-600 transition duration-300" data-name="Combo Donburi & Gyoza" data-price="480.00">Agregar</button>
                             </div>
-                        </details>
+                        </div>
                     </div>
-                    <div class="bg-white p-2 rounded-lg shadow-md animate-on-scroll" style="transition-delay: 300ms;">
-                        <details class="group">
-                            <summary class="flex justify-between items-center font-semibold cursor-pointer p-4">
-                                <span>¿Puedo personalizar mi rollo de sushi?</span>
-                                <i class="ph-caret-down text-xl arrow-down transition-transform duration-300"></i>
-                            </summary>
-                            <div class="px-4 pb-4 text-gray-600">
-                                ¡Claro! Nos encanta preparar los platillos a tu gusto. Para pedidos especiales o modificaciones, te recomendamos hacer tu orden por teléfono al (477) 123-4567 para asegurarnos de que quede exactamente como lo quieres.
+                    <div class="menu-item bg-white text-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                        <img src="resources/images/combo3.jpg" alt="Foto de Combo 3" class="w-full h-56 menu-item-img">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold mb-2 item-name">Combo Sushi Variado</h4>
+                            <p class="text-gray-600 text-sm mb-4 item-desc">Prueba la variedad con este combo de nuestros mejores rollos de sushi.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-extrabold text-red-600">$500.00</span>
+                                <button class="add-to-cart-btn bg-gray-800 text-white rounded-full px-5 py-2 font-semibold hover:bg-red-600 transition duration-300" data-name="Combo Sushi Variado" data-price="500.00">Agregar</button>
                             </div>
-                        </details>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <section id="faq" class="py-16 bg-[#181c23]">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-4 animate-on-scroll text-white">¿Tienes Preguntas?</h2>
+                <div class="max-w-3xl mx-auto">
+                    <div class="bg-[#23272f] rounded-lg p-6 mb-4">
+                        <h4 class="font-semibold mb-2 text-white">¿Cuál es el tiempo de entrega?</h4>
+                        <p class="text-gray-300">Nuestro tiempo de entrega promedio es de 30 a 45 minutos, dependiendo de tu ubicación.</p>
+                    </div>
+                    <div class="bg-[#23272f] rounded-lg p-6 mb-4">
+                        <h4 class="font-semibold mb-2 text-white">¿Puedo pagar con tarjeta?</h4>
+                        <p class="text-gray-300">Sí, aceptamos pagos con tarjeta de crédito, débito y efectivo al recibir tu pedido.</p>
+                    </div>
+                    <div class="bg-[#23272f] rounded-lg p-6 mb-4">
+                        <h4 class="font-semibold mb-2 text-white">¿Hacen entregas fuera de León?</h4>
+                        <p class="text-gray-300">Por el momento solo entregamos dentro de la ciudad de León, Gto.</p>
+                    </div>
+                    <div class="bg-[#23272f] rounded-lg p-6 mb-4">
+                        <h4 class="font-semibold mb-2 text-white">¿Tienen opciones vegetarianas?</h4>
+                        <p class="text-gray-300">Sí, contamos con varias opciones vegetarianas en nuestro menú. ¡Consúltalas en la sección de menú!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-[#23272f]">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-4 animate-on-scroll text-white">Contáctanos</h2>
+                <div class="max-w-lg mx-auto">
+                    <form id="contact-form" class="bg-[#23272f] rounded-lg shadow-lg p-8">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-200 font-semibold mb-2">Nombre</label>
+                            <input type="text" id="name" name="name" required
+                                class="w-full border border-gray-700 rounded-lg p-3 bg-[#181c23] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-200 font-semibold mb-2">Correo Electrónico</label>
+                            <input type="email" id="email" name="email" required
+                                class="w-full border border-gray-700 rounded-lg p-3 bg-[#181c23] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="block text-gray-200 font-semibold mb-2">Mensaje</label>
+                            <textarea id="message" name="message" rows="4" required
+                                class="w-full border border-gray-700 rounded-lg p-3 bg-[#181c23] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-red-600 text-white rounded-lg py-3 font-semibold hover:bg-red-700 transition duration-300">
+                            Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="footer-bg text-white py-10">
+    <footer class="bg-[#181c23] py-12">
         <div class="container mx-auto px-6 text-center">
-            <h3 class="text-2xl font-bold mb-2">ONIGIRI restaurante japonés</h3>
-            <p class="mb-4">Blvd Adolfo López Mateos 1234, Colonia Azteca, León, Gto.</p>
-            <p class="mb-4">Para pedidos por teléfono: <a href="tel:4771234567" class="hover:text-red-400">(477) 123-4567</a></p>
-            <div class="flex justify-center space-x-4">
-                <a href="#" class="hover:text-red-400">Facebook</a>
-                <a href="#" class="hover:text-red-400">Instagram</a>
-                <a href="#" class="hover:text-red-400">WhatsApp</a>
+            <img src="resources/images/onigiri.png" alt="Onigiri Logo" class="h-24 mx-auto mb-4">
+            <h3 class="text-2xl font-bold text-white mb-6">Onigiri</h3>
+            <div class="flex justify-center items-center space-x-6 mb-8">
+                <a href="#menu" class="text-gray-400 hover:text-red-500 transition duration-300">Menú</a>
+                <a href="#gallery" class="text-gray-400 hover:text-red-500 transition duration-300">Galería</a>
+                <a href="#about-us" class="text-gray-400 hover:text-red-500 transition duration-300">Nosotros</a>
+                <a href="#faq" class="text-gray-400 hover:text-red-500 transition duration-300">FAQ</a>
             </div>
-            <p class="mt-8 text-sm text-gray-400">&copy; 2025 Onigiri. Todos los derechos reservados.</p>
+            <div class="border-t border-gray-700 pt-6">
+                <p class="text-gray-500 text-sm">&copy; 2025 Onigiri. Todos los derechos reservados.</p>
+            </div>
         </div>
     </footer>
 
-    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex justify-end">
-        <div class="bg-white w-full max-w-md h-full shadow-lg flex flex-col">
-            <div class="flex justify-between items-center p-4 border-b">
-                <h2 class="text-2xl font-bold">Tu Pedido</h2>
-                <button id="close-cart-btn" class="text-gray-500 text-3xl hover:text-gray-800">&times;</button>
-            </div>
-            <div id="cart-items" class="flex-grow p-4 overflow-y-auto">
-                <p id="empty-cart-message" class="text-gray-500">Tu carrito está vacío.</p>
-            </div>
-            <div class="p-4 border-t">
-                <div class="flex justify-between font-semibold mb-2"><span>Subtotal</span><span id="cart-subtotal">$0.00</span></div>
-                <div class="flex justify-between font-semibold mb-4"><span>Envío</span><span id="cart-shipping">$0.00</span></div>
-                <div class="flex justify-between font-bold text-xl mb-4"><span>Total</span><span id="cart-total">$0.00</span></div>
-                <button class="w-full bg-red-600 text-white py-3 rounded-lg font-bold hover:bg-red-700 transition duration-300">Proceder al Pago</button>
-            </div>
-        </div>
-    </div>
-    
-    <div id="gemini-recommender-modal" class="fixed inset-0 bg-black bg-opacity-60 hidden z-50 flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-lg rounded-lg shadow-2xl flex flex-col transform transition-all duration-300 scale-95 opacity-0">
-            <div class="flex justify-between items-center p-4 border-b bg-gray-50 rounded-t-lg">
-                <h2 class="text-xl font-bold text-gray-800">✨ Asistente Culinario IA</h2>
-                <button id="close-gemini-modal-btn" class="text-gray-500 text-3xl hover:text-gray-800">&times;</button>
-            </div>
-            <div class="p-6">
-                <p class="text-gray-600 mb-4">Describe qué se te antoja hoy (ej. "algo ligero y fresco", "un platillo picoso y con carne", "lo más popular de la casa") y nuestra IA te dará una recomendación.</p>
-                <textarea id="craving-input" class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-red-500 focus:border-red-500 transition" rows="3" placeholder="Ej: Tengo ganas de algo cremoso y con cerdo..."></textarea>
-                <button id="get-recommendation-btn" class="w-full mt-4 bg-red-600 text-white py-3 rounded-lg font-bold hover:bg-red-700 transition duration-300 flex items-center justify-center">
-                    Buscar recomendación
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#23272f] rounded-lg shadow-lg w-full max-w-md p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-white">Tu Carrito</h3>
+                <button id="close-cart-btn" class="text-gray-400 hover:text-gray-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="currentColor" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.2,104.2,0,0,0,128,24Zm37.7,130.3a8.1,8.1,0,0,1,0,11.4,8.2,8.2,0,0,1-11.4,0L128,139.3l-26.3,26.4a8.2,8.2,0,0,1-11.4,0,8.1,8.1,0,0,1,0-11.4L116.7,128,90.3,101.7a8.1,8.1,0,0,1,11.4-11.4L128,116.7l26.3-26.4a8.1,8.1,0,0,1,11.4,11.4L139.3,128Z"></path></svg>
                 </button>
             </div>
-            <div id="gemini-recommendation-result" class="p-6 border-t hidden">
-                <div id="gemini-loading" class="text-center hidden">
-                    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-red-600 mx-auto"></div>
-                    <p class="mt-2 text-gray-600">Buscando la mejor opción para ti...</p>
-                </div>
-                <div id="gemini-recommendation-content" class="text-gray-700"></div>
+            <div id="cart-items" class="max-h-60 overflow-y-auto mb-4"></div>
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-gray-300 font-semibold">Subtotal:</span>
+                <span id="cart-subtotal" class="text-red-400 font-bold">$0.00</span>
+            </div>
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-gray-300 font-semibold">Envío:</span>
+                <span id="cart-shipping" class="text-red-400 font-bold">$0.00</span>
+            </div>
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-gray-300 font-semibold">Total:</span>
+                <span id="cart-total" class="text-red-400 font-bold">$0.00</span>
+            </div>
+            <div class="flex justify-center">
+                <button id="checkout-button" class="w-full bg-red-600 text-white rounded-lg py-3 font-semibold hover:bg-red-700 transition duration-300">
+                    Proceder a Pagar
+                </button>
             </div>
         </div>
     </div>
 
+    <!-- CORRECCIÓN: Modal de IA rediseñado por completo -->
+    <div id="gemini-recommender-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center p-4">
+        <div id="gemini-modal-content-wrapper" class="bg-[#23272f] text-gray-200 rounded-lg shadow-2xl w-full max-w-lg">
+            <div id="gemini-modal-header" class="p-4 border-b border-gray-700 flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-orange-400" fill="currentColor" viewBox="0 0 256 256"><path d="M224,128a96,96,0,1,1-96-96A96,96,0,0,1,224,128ZM164.5,99.5a12,12,0,1,0-17,17l19,19a12,12,0,1,0,17-17ZM128,40a88,88,0,1,0,88,88A88.1,88.1,0,0,0,128,40Zm-8,52a12,12,0,1,1-17-17l19-19a12,12,0,1,1,17,17Z"></path></svg>
+                    <h3 class="text-xl font-bold text-white">Recomendador Inteligente</h3>
+                </div>
+                <button id="close-gemini-modal-btn" class="text-gray-400 hover:text-white transition-colors duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="currentColor" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.2,104.2,0,0,0,128,24Zm37.7,130.3a8.1,8.1,0,0,1,0,11.4,8.2,8.2,0,0,1-11.4,0L128,139.3l-26.3,26.4a8.2,8.2,0,0,1-11.4,0,8.1,8.1,0,0,1,0-11.4L116.7,128,90.3,101.7a8.1,8.1,0,0,1,11.4-11.4L128,116.7l26.3-26.4a8.1,8.1,0,0,1,11.4,11.4L139.3,128Z"></path></svg>
+                </button>
+            </div>
+            <div class="p-6">
+                <div class="mb-5">
+                    <label for="craving-input" class="block text-gray-300 font-semibold mb-2">Describe tu antojo, ¿qué te apetece hoy?</label>
+                    <input type="text" id="craving-input" placeholder="Ej. 'Algo picoso pero que no sea pesado...'" class="w-full bg-[#181c23] border border-gray-600 rounded-lg p-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors duration-200">
+                </div>
+                <div class="mb-5">
+                    <p class="text-sm text-gray-400 mb-3">O prueba con un ejemplo:</p>
+                    <div class="flex flex-wrap gap-2">
+                        <button class="example-prompt">Algo picoso</button>
+                        <button class="example-prompt">Un platillo ligero</button>
+                        <button class="example-prompt">Lo más popular</button>
+                    </div>
+                </div>
+                <div class="flex justify-center mb-4">
+                    <button id="get-recommendation-btn" class="w-full bg-gradient-to-r from-red-500 to-orange-500 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300">
+                        Obtener Recomendación
+                    </button>
+                </div>
+                <div id="gemini-recommendation-result" style="display: none;" class="mt-4 bg-[#181c23] p-4 rounded-lg">
+                    <div id="gemini-loading" class="hidden justify-center items-center text-gray-300">
+                        <svg class="animate-spin h-5 w-5 mr-3 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                        </svg>
+                        Buscando la mejor opción para ti...
+                    </div>
+                    <div id="gemini-recommendation-content" class="mb-4 text-gray-300"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const scrollElements = document.querySelectorAll('.animate-on-scroll');
-            const elementInView = (el, dividend = 1) => {
-                const elementTop = el.getBoundingClientRect().top;
-                return (elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend);
-            };
-            const displayScrollElement = (element) => { element.classList.add('is-visible'); };
-            const handleScrollAnimation = () => {
-                scrollElements.forEach((el) => {
-                    if (elementInView(el, 1.25)) { displayScrollElement(el); } 
-                })
-            }
-            window.addEventListener('scroll', handleScrollAnimation);
-            handleScrollAnimation();
-
-            const menuLinks = document.querySelectorAll('.menu-nav-link');
-            const menuSections = [
-                document.getElementById('ramen'),
-                document.getElementById('sushi'),
-                document.getElementById('donburi')
-            ];
-
-            function highlightMenuLink() {
-                let fromTop = window.scrollY + 150; 
-                let currentSection = null;
-                menuSections.forEach(section => {
-                    if (section && section.offsetTop <= fromTop) {
-                        currentSection = section;
-                    }
-                });
-                menuLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (currentSection && link.getAttribute('href') === `#${currentSection.id}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-            window.addEventListener('scroll', highlightMenuLink);
-
-            const cartButton = document.getElementById('cart-button');
-            const cartModal = document.getElementById('cart-modal');
-            const closeCartBtn = document.getElementById('close-cart-btn');
-            const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
-            const cartCount = document.getElementById('cart-count');
-            const cartItemsContainer = document.getElementById('cart-items');
-            const cartSubtotalEl = document.getElementById('cart-subtotal');
-            const cartShippingEl = document.getElementById('cart-shipping');
-            const cartTotalEl = document.getElementById('cart-total');
-
-            let cart = [];
-            const shippingCost = 50;
-            const freeShippingThreshold = 400;
-
-            cartButton.addEventListener('click', toggleCart);
-            closeCartBtn.addEventListener('click', toggleCart);
-            cartModal.addEventListener('click', (e) => { if (e.target === cartModal) { toggleCart(); } });
-
-            addToCartButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const name = button.dataset.name;
-                    const price = parseFloat(button.dataset.price);
-                    addToCart({ name, price });
-                });
-            });
-            
-            cartItemsContainer.addEventListener('click', e => {
-                if (e.target.classList.contains('quantity-change')) {
-                    const name = e.target.dataset.name;
-                    const change = parseInt(e.target.dataset.change);
-                    updateQuantity(name, change);
-                }
-            });
-
-            function toggleCart() { cartModal.classList.toggle('hidden'); }
-
-            function addToCart(item) {
-                const existingItem = cart.find(cartItem => cartItem.name === item.name);
-                if (existingItem) {
-                    existingItem.quantity++;
-                } else {
-                    cart.push({ ...item, quantity: 1 });
-                }
-                updateCart();
-            }
-
-            function updateQuantity(name, change) {
-                const item = cart.find(cartItem => cartItem.name === name);
-                if (item) {
-                    item.quantity += change;
-                    if (item.quantity <= 0) {
-                        cart = cart.filter(cartItem => cartItem.name !== name);
-                    }
-                }
-                updateCart();
-            }
-
-            function updateCart() {
-                renderCartItems();
-                updateCartTotals();
-                updateCartCount();
-            }
-            
-            function renderCartItems() {
-                cartItemsContainer.innerHTML = '';
-                if (cart.length === 0) {
-                    cartItemsContainer.innerHTML = '<p id="empty-cart-message" class="text-gray-500">Tu carrito está vacío.</p>';
-                } else {
-                    cart.forEach(item => {
-                        const itemEl = document.createElement('div');
-                        itemEl.className = 'flex justify-between items-center mb-4';
-                        itemEl.innerHTML = `
-                            <div>
-                                <h4 class="font-semibold">${item.name}</h4>
-                                <p class="text-gray-600">$${item.price.toFixed(2)}</p>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <button class="quantity-change text-lg font-bold" data-name="${item.name}" data-change="-1">-</button>
-                                <span>${item.quantity}</span>
-                                <button class="quantity-change text-lg font-bold" data-name="${item.name}" data-change="1">+</button>
-                            </div>
-                        `;
-                        cartItemsContainer.appendChild(itemEl);
-                    });
-                }
-            }
-
-            function updateCartTotals() {
-                const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-                const shipping = subtotal > 0 && subtotal < freeShippingThreshold ? shippingCost : 0;
-                const total = subtotal + shipping;
-                cartSubtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-                cartShippingEl.textContent = `$${shipping.toFixed(2)}`;
-                cartTotalEl.textContent = `$${total.toFixed(2)}`;
-            }
-            
-            function updateCartCount() {
-                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-                cartCount.textContent = totalItems;
-            }
-            
-            updateCart();
-
-            const geminiModal = document.getElementById('gemini-recommender-modal');
-            const geminiModalContent = geminiModal.querySelector('div');
-            const openGeminiBtn = document.getElementById('gemini-recommender-btn');
-            const closeGeminiBtn = document.getElementById('close-gemini-modal-btn');
-            const getRecommendationBtn = document.getElementById('get-recommendation-btn');
-            const cravingInput = document.getElementById('craving-input');
-            const resultContainer = document.getElementById('gemini-recommendation-result');
-            const loadingIndicator = document.getElementById('gemini-loading');
-            const contentContainer = document.getElementById('gemini-recommendation-content');
-            
-            openGeminiBtn.addEventListener('click', () => {
-                geminiModal.classList.remove('hidden');
-                setTimeout(() => {
-                    geminiModalContent.classList.remove('scale-95', 'opacity-0');
-                }, 10);
-            });
-            
-            const closeGeminiModal = () => {
-                geminiModalContent.classList.add('scale-95', 'opacity-0');
-                setTimeout(() => {
-                    geminiModal.classList.add('hidden');
-                    cravingInput.value = '';
-                    resultContainer.classList.add('hidden');
-                    contentContainer.innerHTML = '';
-                }, 300);
-            };
-
-            closeGeminiBtn.addEventListener('click', closeGeminiModal);
-            geminiModal.addEventListener('click', (e) => { if (e.target === geminiModal) closeGeminiModal(); });
-
-            getRecommendationBtn.addEventListener('click', async () => {
-                const craving = cravingInput.value.trim();
-                if (!craving) {
-                    alert('Por favor, describe tu antojo.');
-                    return;
-                }
-
-                resultContainer.classList.remove('hidden');
-                loadingIndicator.classList.remove('hidden');
-                contentContainer.innerHTML = '';
-                
-                try {
-                    const menuItems = Array.from(document.querySelectorAll('.menu-item')).map(item => {
-                       const name = item.querySelector('.item-name').textContent;
-                       const desc = item.querySelector('.item-desc').textContent;
-                       return `- ${name}: ${desc}`;
-                    }).join('\n');
-
-                    const systemPrompt = "Eres un asistente culinario amigable y experto para el restaurante de comida japonesa 'Onigiri'. Tu objetivo es ayudar a los clientes a elegir el platillo perfecto de nuestro menú basándote en sus antojos. Sé conciso, amigable y haz que tus recomendaciones suenen deliciosas. Siempre responde en español y usa un formato simple con un encabezado para el platillo y un párrafo de descripción.";
-                    const userQuery = `Este es nuestro menú:\n${menuItems}\n\nUn cliente dice que tiene antojo de "${craving}". Basado en el menú, ¿qué platillo o platillos le recomendarías? Describe brevemente por qué es una buena elección para su antojo.`;
-
-                    const apiKey = ""; 
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-
-                    const payload = {
-                        contents: [{ parts: [{ text: userQuery }] }],
-                        systemInstruction: {
-                            parts: [{ text: systemPrompt }]
-                        },
-                    };
-                    
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    if (!response.ok) {
-                        throw new Error(`API request failed with status ${response.status}`);
-                    }
-
-                    const result = await response.json();
-                    const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
-                    
-                    if (text) {
-                        let htmlContent = text
-                            .replace(/\*\*(.*?)\*\*/g, '<h4>$1</h4>') 
-                            .replace(/\n/g, '<br>'); 
-                        contentContainer.innerHTML = htmlContent;
-                    } else {
-                        throw new Error("No se recibió una respuesta válida de la IA.");
-                    }
-
-                } catch (error) {
-                    console.error("Error fetching recommendation:", error);
-                    contentContainer.innerHTML = '<p class="text-red-500">Lo sentimos, ocurrió un error al obtener tu recomendación. Por favor, intenta de nuevo.</p>';
-                } finally {
-                    loadingIndicator.classList.add('hidden');
-                }
-            });
-        });
-    </script>
+    <script src="resources/js/estilos.js"></script>
 </body>
 </html>
 
