@@ -1,8 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- LÓGICA DEL MENÚ MÓVIL ---
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+            // Se usa una clase 'open' para controlar la animación
+            mobileMenu.classList.toggle('open');
+            mobileMenuButton.classList.toggle('open');
+        });
+    }
+
+    mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            mobileMenuButton.classList.remove('open');
+        });
+    });
+
     // --- NAVEGACIÓN Y SCROLL ---
     const menuLinks = document.querySelectorAll('.menu-nav-link');
     const sections = document.querySelectorAll('section[id]');
     const verifyButton = document.getElementById('verify-button');
+    const addressInput = document.getElementById('address-input');
+    const addressStatus = document.getElementById('address-status');
 
     function highlightMenuLink() {
         let scrollPosition = window.scrollY || window.pageYOffset;
@@ -23,9 +45,39 @@ document.addEventListener('DOMContentLoaded', () => {
     if (verifyButton) {
         verifyButton.addEventListener('click', () => {
             const menuSection = document.getElementById('menu');
-            if (menuSection) {
-                menuSection.scrollIntoView({ behavior: 'smooth' });
+            
+            // Clear previous message and animations
+            addressStatus.innerHTML = '';
+            addressStatus.classList.remove('fade-in', 'fade-out');
+
+            if (addressInput.value.trim() === '') {
+                addressStatus.innerHTML = `
+                    <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    <span>Por favor, ingresa una dirección.</span>`;
+                addressStatus.classList.add('fade-in');
+                
+                setTimeout(() => {
+                    addressStatus.classList.add('fade-out');
+                    setTimeout(() => addressStatus.innerHTML = '', 500);
+                }, 3000);
+                return;
             }
+
+            addressStatus.innerHTML = `
+                <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <span>¡Confirmado! Tenemos cobertura. Redirigiendo al menú...</span>`;
+            addressStatus.classList.add('text-green-400', 'fade-in');
+
+            setTimeout(() => {
+                if (menuSection) {
+                    menuSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 1500);
+
+            setTimeout(() => {
+                addressStatus.classList.add('fade-out');
+                setTimeout(() => addressStatus.innerHTML = '', 500);
+            }, 4000);
         });
     }
     
@@ -146,12 +198,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             const phoneNumber = "524777603835";
-            let message = "¡Hola! Quisiera hacer el siguiente pedido de Onigiri:\n\n";
-            cart.forEach(item => { message += `- ${item.quantity}x ${item.name}\n`; });
+            
+            let message = "🍣 *¡Hola, Onigiri!* 🍜\n\nQuisiera hacer el siguiente pedido:\n\n";
+            message += "*--- MI PEDIDO ---*\n";
+            cart.forEach(item => {
+                message += `- ${item.quantity}x ${item.name}\n`;
+            });
+            
             const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
             const shipping = subtotal > 0 && subtotal < freeShippingThreshold ? shippingCost : 0;
             const total = subtotal + shipping;
-            message += `\n*Total:* $${total.toFixed(2)}\n\n¡Muchas gracias!`;
+            
+            message += "\n*--- RESUMEN ---*\n";
+            message += `*Subtotal:* $${subtotal.toFixed(2)}\n`;
+            message += `*Envío:* ${shipping > 0 ? `$${shipping.toFixed(2)}` : 'Gratis'}\n`;
+            message += `*Total a pagar:* *$${total.toFixed(2)}*\n\n`;
+            message += "¡Muchas gracias! Quedo a la espera de la confirmación. 👍";
+
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         });
@@ -179,14 +242,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const openGeminiModal = () => {
         geminiModal.classList.remove('hidden');
         geminiModal.classList.add('flex');
+        setTimeout(() => {
+            geminiModal.classList.add('open');
+        }, 10);
     }
 
     const closeGeminiModal = () => {
-        geminiModal.classList.add('hidden');
-        geminiModal.classList.remove('flex');
-        cravingInput.value = '';
-        contentContainer.innerHTML = '';
-        resultContainer.style.display = 'none';
+        geminiModal.classList.remove('open');
+        setTimeout(() => {
+            geminiModal.classList.add('hidden');
+            geminiModal.classList.remove('flex');
+            cravingInput.value = '';
+            contentContainer.innerHTML = '';
+            resultContainer.style.display = 'none';
+        }, 300); // Coincide con la duración de la transición en CSS
     };
     
     openGeminiBtn.addEventListener('click', openGeminiModal);
@@ -214,10 +283,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const systemPrompt = "Eres un asistente culinario amigable y experto para el restaurante de comida japonesa 'Onigiri'. Tu objetivo es ayudar a los clientes a elegir el platillo perfecto de nuestro menú basándote en sus antojos. Sé conciso, amigable y haz que tus recomendaciones suenen deliciosas. Siempre responde en español y usa un formato simple con un encabezado para el platillo y un párrafo de descripción.";
             const userQuery = `Este es nuestro menú:\n${menuItems}\n\nUn cliente dice que tiene antojo de "${craving}". Basado en el menú, ¿qué platillo o platillos le recomendarías? Describe brevemente por qué es una buena elección para su antojo.`;
 
-            // --- AJUSTE TEMPORAL PARA PRUEBAS LOCALES ---
-            // Se ha insertado tu API key aquí.
-            // ¡IMPORTANTE! Antes de publicar tu sitio, debes eliminar la clave de aquí
-            // y volver a usar el método seguro con la función serverless que creamos.
             const apiKey = "AIzaSyAwXxePutLypJUmE2QZG-oSixOBtBeRJEI"; 
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 

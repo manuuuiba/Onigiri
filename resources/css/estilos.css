@@ -6,29 +6,32 @@ body {
 
 /* --- ANIMACIONES Y TRANSICIONES --- */
 
-/* Keyframes para la animación de entrada del título */
 @keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Transición suave para botones y enlaces */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(10px); }
+}
+
+.fade-in { animation: fadeIn 0.5s ease-out forwards; }
+.fade-out { animation: fadeOut 0.5s ease-in forwards; }
+
 button, a {
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* Animación de entrada para el título principal */
 .hero-bg h1 {
     animation: fadeInDown 1s ease-out;
 }
 
-/* Animación de scroll mejorada */
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(40px);
@@ -40,12 +43,77 @@ button, a {
     transform: translateY(0);
 }
 
-/* Efecto de elevación para las tarjetas del menú */
 .menu-item {
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 .menu-item:hover {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+
+/* --- ESTILOS DEL MENÚ MÓVIL CON ANIMACIÓN --- */
+#mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.23, 1, 0.32, 1), padding 0.5s ease;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#mobile-menu.open {
+    max-height: 500px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.75rem;
+}
+
+#mobile-menu-button svg {
+    transition: transform 0.3s ease-in-out;
+}
+
+#mobile-menu-button.open svg {
+    transform: rotate(90deg);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+#mobile-menu.open .mobile-menu-link {
+    opacity: 0;
+    animation: slideIn 0.4s forwards;
+}
+
+#mobile-menu.open .mobile-menu-link:nth-child(1) { animation-delay: 0.1s; }
+#mobile-menu.open .mobile-menu-link:nth-child(2) { animation-delay: 0.2s; }
+#mobile-menu.open .mobile-menu-link:nth-child(3) { animation-delay: 0.3s; }
+#mobile-menu.open .mobile-menu-link:nth-child(4) { animation-delay: 0.4s; }
+
+/* --- ANIMACIÓN VENTA IA --- */
+#gemini-recommender-modal {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#gemini-modal-content {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease-in-out;
+}
+
+#gemini-recommender-modal.open {
+    opacity: 1;
+}
+
+#gemini-recommender-modal.open #gemini-modal-content {
+    transform: scale(1);
+    opacity: 1;
 }
 
 
@@ -83,19 +151,18 @@ h3[id], section[id] {
     padding-right: 1rem;
 }
 
-/* Estilos de los botones de ejemplo para el tema oscuro */
 .example-prompt {
-    background-color: #374151; /* gray-700 */
-    color: #d1d5db; /* gray-300 */
+    background-color: #374151; 
+    color: #d1d5db; 
     padding: 0.25rem 0.75rem;
     border-radius: 9999px;
     font-size: 0.875rem;
-    border: 1px solid #4b5563; /* gray-600 */
+    border: 1px solid #4b5563; 
 }
 .example-prompt:hover {
-    background-color: #4b5563; /* gray-600 */
-    color: #ffffff; /* white */
-    border-color: #6b7280; /* gray-500 */
+    background-color: #4b5563;
+    color: #ffffff;
+    border-color: #6b7280;
 }
 
 .menu-nav-link.active {
