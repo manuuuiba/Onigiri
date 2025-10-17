@@ -106,27 +106,131 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartTotalEl = document.getElementById('cart-total');
     const checkoutButton = document.getElementById('checkout-button');
 
-    let cart = [];
-    const shippingCost = 50;
-    const freeShippingThreshold = 400;
+    // NUEVO: Estado de autenticación (puedes integrar con backend después)
+    let isAuthenticated = false;
 
-    cartButton.addEventListener('click', toggleCart);
-    closeCartBtn.addEventListener('click', toggleCart);
-    cartModal.addEventListener('click', (e) => { if (e.target === cartModal) toggleCart(); });
+    // --- Modal de autenticación (mejorado con animaciones y accesibilidad) ---
+    const authButton = document.getElementById('auth-button');
+    const authModal = document.getElementById('auth-modal');
+    const authModalContent = document.getElementById('auth-modal-content');
+    const closeAuthBtn = document.getElementById('close-auth-btn');
+    const tabLogin = document.getElementById('tab-login');
+    const tabRegister = document.getElementById('tab-register');
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
+    const authStatus = document.getElementById('auth-status');
 
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const name = button.dataset.name;
-            const price = parseFloat(button.dataset.price);
-            addToCart({ name, price });
-        });
+    // helper: set pestaña activa
+    const setAuthTab = (tab) => {
+        if (tab === 'login') {
+            tabLogin.classList.add('tab-active', 'bg-red-600');
+            tabLogin.classList.remove('bg-gray-700');
+            tabRegister.classList.remove('tab-active');
+            tabRegister.classList.add('bg-gray-700');
+            loginForm.classList.remove('hidden');
+            registerForm.classList.add('hidden');
+        } else {
+            tabRegister.classList.add('tab-active', 'bg-red-600');
+            tabRegister.classList.remove('bg-gray-700');
+            tabLogin.classList.remove('tab-active');
+            tabLogin.classList.add('bg-gray-700');
+            registerForm.classList.remove('hidden');
+            loginForm.classList.add('hidden');
+        }
+    };
+
+    const openAuthModal = (defaultTab = 'login') => {
+        if (!authModal || !authModalContent) return;
+        // mostrar overlay
+        authModal.classList.remove('hidden');
+        authModal.classList.add('flex');
+        // small delay para animaciones CSS
+        setTimeout(() => {
+            authModal.classList.add('open');
+            // añadir clase de entrada al contenido
+            authModalContent.classList.remove('animate-out');
+            authModalContent.classList.add('animate-in');
+            // animar logo si existe
+            const logo = authModalContent.querySelector('img');
+            if (logo) { logo.classList.add('auth-logo', 'pop'); setTimeout(() => logo.classList.remove('pop'), 600); }
+
+            // pestaña por defecto
+            setAuthTab(defaultTab);
+
+            // focus accesible: enfocar primer input visible
+            const firstInput = authModalContent.querySelector('input:not([type="hidden"])');
+            if (firstInput) firstInput.focus();
+        }, 12);
+    };
+
+    const closeAuthModal = () => {
+        if (!authModal || !authModalContent) return;
+        // animación de salida
+        authModalContent.classList.remove('animate-in');
+        authModalContent.classList.add('animate-out');
+        authModal.classList.remove('open');
+        setTimeout(() => {
+            authModal.classList.add('hidden');
+            authModal.classList.remove('flex');
+            authStatus.innerHTML = '';
+            // limpiar inputs si se quiere (opcional)
+            // authModalContent.querySelectorAll('input').forEach(i => i.value = '');
+        }, 240); // debe coincidir con durations en CSS
+    };
+
+    if (authButton) authButton.addEventListener('click', () => openAuthModal('login'));
+    if (closeAuthBtn) closeAuthBtn.addEventListener('click', closeAuthModal);
+    if (authModal) authModal.addEventListener('click', (e) => { if (e.target === authModal) closeAuthModal(); });
+
+    // cerrar con Escape
+    document.addEventListener('keydown', (e) => {
+        if ((e.key === 'Escape' || e.key === 'Esc') && !authModal.classList.contains('hidden')) {
+            closeAuthModal();
+        }
     });
-    
+
+    // pestañas con estilo consistente
+    tabLogin.addEventListener('click', () => setAuthTab('login'));
+    tabRegister.addEventListener('click', () => setAuthTab('register'));
+
+    // Abrir modal automáticamente al cargar / recargar la página si NO está autenticado
+    setTimeout(() => {
+        if (typeof isAuthenticated !== 'undefined' && !isAuthenticated) {
+            openAuthModal('login');
+        }
+    }, 600);
+
+    // --- al hacer click en enlaces que llevan a "#menu" abrimos modal (ya incluido)
+    // (ya existía el handler que llama a openAuthModal)
+
+    // Simular login / register (reemplazar por llamadas reales)
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        isAuthenticated = true;
+        authStatus.innerHTML = '<span class="text-green-400">Sesión iniciada correctamente.</span>';
+        setTimeout(() => closeAuthModal(), 700);
+    });
+    registerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        isAuthenticated = true;
+        authStatus.innerHTML = '<span class="text-green-400">Cuenta creada e iniciada.</span>';
+        setTimeout(() => closeAuthModal(), 700);
+    });
+
+    // --- ADAPTACIÓN: Cuando se hace clic en el botón "-" del carrito ---
+    // Se modifica la lógica para mostrar modal de autenticación si el usuario NO está autenticado.
     cartItemsContainer.addEventListener('click', e => {
         const target = e.target.closest('.quantity-change');
         if (target) {
             const name = target.dataset.name;
             const change = parseInt(target.dataset.change);
+
+            // Si es la acción de disminuir y el usuario NO está autenticado, abrimos modal de auth
+            if (change === -1 && !isAuthenticated) {
+                openAuthModal();
+                return; // prevenimos la modificación de cantidad
+            }
+            // Si pasa la comprobación, usamos la función existente para actualizar
             updateQuantity(name, change);
         }
     });
